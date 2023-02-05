@@ -1,0 +1,23 @@
+.tooltip {
+  display: inline-flex;
+  position: relative;
+
+  &:hover {
+    &::before {
+      opacity: 1;
+      visibility: visible;
+      translate: 0 -5px;
+    }
+  }
+
+  &::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: -1.5rem;
+    background-color: #ffffff;
+    opacity: 0;
+    visibility: hidden;
+    transition: translate ease-in-out 0.4s;
+    padding: 0.35rem 0.15rem;
+  }
+}
