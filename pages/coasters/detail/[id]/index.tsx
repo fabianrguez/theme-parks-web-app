@@ -23,8 +23,8 @@ export default function CoasterDetailPage({ coaster }: CoasterDetailPageProps) {
         </h1>
       </div>
       <main className="flex flex-col p-0 md:px-32 md:py-10">
-        <section className="grid grid-cols-1 md:grid-cols-2">
-          <figure className="relative w-full max-h-fit md:max-h-96 md:max-w-fit h-full group overflow-hidden md:rounded-md">
+        <section className="flex flex-col md:flex-row">
+          <figure className="relative flex-1 w-full md:max-h-96 md:max-w-fit h-full group overflow-hidden md:rounded-md">
             <Image
               src={coaster.mainPicture?.url}
               className="h-48 w-full object-cover md:h-full transition duration-300"
@@ -34,7 +34,7 @@ export default function CoasterDetailPage({ coaster }: CoasterDetailPageProps) {
               {coaster.mainPicture?.copyName} - {coaster.mainPicture?.copyDate}
             </figcaption>
           </figure>
-          <div className="p-2 md:p-6">
+          <div className="px-2 md:px-6 flex-1">
             <header className="flex justify-between items-center py-2">
               <h1 className="hidden md:block font-extrabold text-3xl text-indigo-500">{coaster.name}</h1>
               <span className="bg-indigo-800 w-full md:w-fit text-white text-center font-semibold p-2 rounded-lg">
@@ -53,9 +53,9 @@ export default function CoasterDetailPage({ coaster }: CoasterDetailPageProps) {
         </section>
         <section className="flex flex-col mt-4 p-2">
           <h2 className="font-semibold text-2xl">Stats</h2>
-          <ul className="grid grid-cols-1 md:grid-cols-3 ">
+          <ul className="flex flex-col gap-4">
             {Object.entries(coaster.stats ?? {}).map(([key, value]: [string, any], index: number) => (
-              <li key={index}>
+              <li key={index} className="inline-flex md:w-1/4 md:items-start md:justify-start flex-1">
                 <span className="font-semibold">{key}:</span>
                 <span>{value}</span>
               </li>
