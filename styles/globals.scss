@@ -45,13 +45,13 @@ $white-color: #ffffff;
   &::before {
     content: '';
     border-style: solid;
-    border-width: 0.25rem 0.25rem 0 0;
+    border-width: 0.15rem 0.15rem 0 0;
     display: inline-flex;
     align-items: center;
-    height: 0.45rem;
+    height: 0.5rem;
     transform: rotate(-135deg);
     vertical-align: top;
-    width: 0.45rem;
+    width: 0.5rem;
     margin-right: 0.35rem;
   }
 }

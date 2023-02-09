@@ -1,4 +1,4 @@
-import { Head, Image } from '@/components';
+import { Head, Image, Sticky } from '@/components';
 import { RollerCoaster } from '@/types';
 import { log } from 'console';
 import type { GetServerSideProps } from 'next';
@@ -14,14 +14,19 @@ export default function CoasterDetailPage({ coaster }: CoasterDetailPageProps) {
   return (
     <>
       <Head pageTitle={coaster.name} metaContent={`${coaster.name} roller coaster information`} />
-      <div className="flex items-center">
-        <button className="btn--back" onClick={router.back}>
-          Back
+      <Sticky
+        position="top"
+        className="flex items-center bg-white transition-all"
+        unstuckClassName="h-10"
+        stuckClassName="shadow-lg h-16"
+      >
+        <button className="btn--back h-full" onClick={router.back}>
+          <span>Back</span>
         </button>
         <h1 className="md:hidden inline-flex items-center justify-center w-full font-extrabold text-indigo-500 text-lg ml-2">
           {coaster.name}
         </h1>
-      </div>
+      </Sticky>
       <main className="flex flex-col p-0 md:px-32 md:py-10">
         <section className="flex flex-col md:flex-row">
           <figure className="relative flex-1 w-full md:max-h-96 md:max-w-fit h-full group overflow-hidden md:rounded-md">

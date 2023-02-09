@@ -11,6 +11,8 @@ interface UseIsInViewportProps<TElement> {
 
 type UseIsInViewportResult<TElement> = [boolean, RefObject<TElement>];
 
+// TODO: Refactor to use custom hook useIntersectionObserver
+
 export default function useIsInViewport<TElement extends HTMLElement = HTMLElement>({
   initialValue = false,
   once = true,
