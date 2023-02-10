@@ -10,29 +10,29 @@ $white-color: #ffffff;
   --white-color: $white-color;
 }
 
-::-webkit-scrollbar {
-  width: 10px;
-  /* height: 4px; */
-}
+// ::-webkit-scrollbar {
+//   width: 10px;
+//   /* height: 4px; */
+// }
 
-/* ::-webkit-scrollbar-track {
-  /* background: #f1f1f1; */
-/* }  */
+// /* ::-webkit-scrollbar-track {
+//   /* background: #f1f1f1; */
+// /* }  */
 
-::-webkit-scrollbar-track {
-  padding-right: 1rem;
-}
+// ::-webkit-scrollbar-track {
+//   padding-right: 1rem;
+// }
 
-::-webkit-scrollbar-thumb {
-  background: #99f8e6;
-  border-radius: 10px;
-  height: 10px;
-  padding-right: 0.5rem;
-}
+// ::-webkit-scrollbar-thumb {
+//   background: #99f8e6;
+//   border-radius: 10px;
+//   height: 10px;
+//   padding-right: 0.5rem;
+// }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #42e7d7;
-}
+// ::-webkit-scrollbar-thumb:hover {
+//   background: #42e7d7;
+// }
 
 .btn--back {
   display: inline-flex;

@@ -15,11 +15,11 @@ export default function Home({ randomCoaster }: HomeProps) {
       </Head>
       <main>
         <section className="flex items-center justify-center">
-          <h1 className="text-3xl font-extrabold font-mono">Theme Parks App</h1>
+          <h1 className="text-3xl font-extrabold text-indigo-500">Theme Parks App</h1>
         </section>
 
-        <section>
-          <h2>Random Coaster</h2>
+        <section className="p-2">
+          <h2 className="font-semibold text-xl text-indigo-800 border-b-4 border-indigo-800 mb-6">Random Coaster</h2>
           <RollerCoasterCard
             id={randomCoaster.id}
             name={randomCoaster.name}

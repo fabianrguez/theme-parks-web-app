@@ -11,9 +11,11 @@ export default function useIntersectionObserver<TElement extends HTMLElement>(
     const element = elementRef.current as TElement;
     const observer = new IntersectionObserver(onIntersect, options);
 
-    observer.observe(element);
+    element && observer.observe(element);
 
-    return () => observer.unobserve(element);
+    return () => {
+      element && observer.unobserve(element);
+    };
   }, [elementRef, onIntersect, options]);
 
   return elementRef;

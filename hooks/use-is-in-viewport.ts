@@ -1,5 +1,6 @@
-import type { MutableRefObject, RefObject } from 'react';
-import { useEffect, useRef, useState } from 'react';
+import type { RefObject } from 'react';
+import { useState } from 'react';
+import useIntersectionObserver from './use-intersection-observer';
 
 interface UseIsInViewportProps<TElement> {
   initialValue?: boolean;
@@ -9,43 +10,29 @@ interface UseIsInViewportProps<TElement> {
   threshold?: number;
 }
 
-type UseIsInViewportResult<TElement> = [boolean, RefObject<TElement>];
-
-// TODO: Refactor to use custom hook useIntersectionObserver
-
 export default function useIsInViewport<TElement extends HTMLElement = HTMLElement>({
   initialValue = false,
   once = true,
   offset = '0px',
   elementRef,
   threshold,
-}: UseIsInViewportProps<TElement> = {}): UseIsInViewportResult<TElement> {
+}: UseIsInViewportProps<TElement> = {}): [boolean, RefObject<TElement>] {
   const [isInViewport, setIsInViewport] = useState<boolean>(initialValue);
-  const ref = useRef<TElement>(null);
+  const ref = useIntersectionObserver<TElement>(onIntersect, {
+    rootMargin: offset,
+    threshold,
+  });
 
-  useEffect(() => {
-    const reference = elementRef ?? ref;
-    const { current: currentElement } = reference ?? {};
-    let observer: IntersectionObserver;
+  function onIntersect([entry]: IntersectionObserverEntry[], observer: IntersectionObserver): void {
+    setIsInViewport(entry.isIntersecting);
 
-    observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsInViewport(entry.isIntersecting);
+    if (entry.isIntersecting) {
+      const reference = elementRef ?? ref;
+      const { current: currentElement } = reference ?? {};
 
-        if (entry.isIntersecting) {
-          once && observer && observer.unobserve(currentElement as TElement);
-        }
-      },
-      {
-        rootMargin: offset,
-        threshold,
-      }
-    );
-
-    observer.observe(currentElement as TElement);
-
-    return () => observer.unobserve(currentElement as TElement);
-  }, [elementRef, once, offset, threshold]);
+      once && observer && observer.unobserve(currentElement as TElement);
+    }
+  }
 
   return [isInViewport, ref];
 }

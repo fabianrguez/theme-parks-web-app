@@ -11,7 +11,7 @@ $next-pagination-border-radius: 4px;
 $next-pagination-line-height: 24px;
 
 $next-pagination-item-background: #fff;
-$next-pagination-item-background-current: #99f6e4;
+$next-pagination-item-background-current: #6366f5;
 $next-pagination-item-background-disabled: $next-pagination-item-background;
 
 $next-pagination-item-color: #edeef2;
@@ -114,7 +114,7 @@ $next-pagination-select-border-color-hover: $next-pagination-interative-color;
 
     &--current {
       background: $next-pagination-item-background-current;
-      color: $next-pagination-item-color-current;
+      color: $next-pagination-item-color;
       pointer-events: none;
     }
 
