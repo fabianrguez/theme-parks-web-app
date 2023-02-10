@@ -7,3 +7,4 @@ export { default as Head } from './head';
 export { default as Sticky } from './sticky';
 export { default as If } from './if';
 export { default as Gallery } from './gallery';
+export { default as CoastersParksSearchField } from './coasters-parks-search-field';

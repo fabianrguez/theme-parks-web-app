@@ -1,4 +1,4 @@
-import { Gallery, Head, If, Image, Sticky } from '@/components';
+import { CoastersParksSearchField, Gallery, Head, If, Image, Sticky } from '@/components';
 import { GalleryImage } from '@/components/gallery';
 import { useWindowSize } from '@/hooks';
 import type { RollerCoaster, RollerCoasterPicture } from '@/types';
@@ -29,25 +29,27 @@ export default function CoasterDetailPage({ coaster }: CoasterDetailPageProps) {
       caption: `${image.copyName} - ${image.copyDate}`,
     }));
 
-  console.log({ width });
-
   return (
     <>
       <Head pageTitle={coaster.name} metaContent={`${coaster.name} roller coaster information`} />
       <Sticky
         position="top"
-        className="flex items-center bg-white w-full transition-all"
-        unstuckClassName="h-10"
-        stuckClassName="shadow-lg h-16"
+        className="coaster-detail-page__sticky-search flex flex-col items-center bg-white w-full transition-all shadow-lg"
       >
-        <button className="btn--back h-full" onClick={router.back}>
-          <span>Back</span>
-        </button>
-        <If condition={width < 768}>
-          <h1 className="md:hidden whitespace-nowrap justify-center w-full overflow-hidden font-extrabold text-indigo-500 text-lg ml-2 text-ellipsis">
-            {coaster.name}
-          </h1>
-        </If>
+        <CoastersParksSearchField />
+        {/* TODO: Move to custom component BacKNavigation */}
+        <section className="flex w-full h-16 md:h-10 bg-inherit">
+          <button className="btn--back h-full rounded-sm" onClick={router.back}>
+            <span>Back</span>
+          </button>
+          <If condition={width < 768}>
+            <div className="flex items-center overflow-hidden" title={coaster.name}>
+              <h2 className="whitespace-nowrap justify-center w-full overflow-hidden font-extrabold text-indigo-500 text-lg ml-2 text-ellipsis">
+                {coaster.name}
+              </h2>
+            </div>
+          </If>
+        </section>
       </Sticky>
       <main className="flex flex-col p-0 md:px-32 md:py-10">
         <section className="flex flex-col md:flex-row">
@@ -107,7 +109,7 @@ export default function CoasterDetailPage({ coaster }: CoasterDetailPageProps) {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { id } = query;
 
-  const coaster: RollerCoaster = await fetch(`${process.env.API_URL}/api/coasters/${id}`)
+  const coaster: RollerCoaster = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/coasters/${id}`)
     .then((response: Response) => response.json())
     .then((data: RollerCoaster) => data);
 

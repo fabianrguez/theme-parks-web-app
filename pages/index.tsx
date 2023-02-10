@@ -44,9 +44,9 @@ export default function Home({ randomCoaster }: HomeProps) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const randomCoaster = await fetch(`${process.env.API_URL}/api/coasters/random`).then((response: Response) =>
-    response.json()
+export const getServerSideProps: GetServerSideProps = async () => {
+  const randomCoaster = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/coasters/random`).then(
+    (response: Response) => response.json()
   );
 
   return {

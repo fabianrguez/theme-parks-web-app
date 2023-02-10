@@ -1,6 +1,7 @@
 import { useDebounce } from '@/hooks';
 import type { ChangeEvent } from 'react';
 import { FocusEvent, useEffect, useState } from 'react';
+import { If } from '@/components';
 
 type SearchFieldProps = {
   searchUrl: string;
@@ -61,7 +62,7 @@ export default function SearchSuggestionsField({
 
   return (
     <div
-      className="sticky top-0 z-10 w-full h-16 px-4 flex flex-col items-center justify-center bg-white"
+      className="suggestions-field w-full h-16 px-4 flex flex-col items-center justify-center bg-white transition-all"
       aria-controls="suggestions"
       onBlur={handleBlur}
       onFocus={handleFocus}
@@ -69,12 +70,12 @@ export default function SearchSuggestionsField({
       <div className="w-full md:w-[70%] lg:w-[30%]">
         <input
           type="search"
-          className="bg-gray-50 border-2 border-indigo-500 text-black font-semibold placeholder:text-black text-sm rounded-lg outline-none block w-full p-2.5"
+          className="bg-gray-50 border-2 text-black font-semibold placeholder:text-black text-sm rounded-lg outline-none block w-full p-2.5"
           placeholder="Roller coaster search ..."
           onChange={handleChange}
         />
       </div>
-      {isSuggestionsOpen ? (
+      <If condition={isSuggestionsOpen}>
         <ul
           id="suggestions"
           className="absolute top-full bg-gray-50 dark:bg-gray-700 max-h-[40rem] w-[92%] md:w-[70%] lg:w-[30%] rounded-lg overflow-auto transition-all delay-700 hide-scrollbar"
@@ -89,7 +90,7 @@ export default function SearchSuggestionsField({
             </li>
           ))}
         </ul>
-      ) : null}
+      </If>
     </div>
   );
 }

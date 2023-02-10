@@ -1,0 +1,7 @@
+.coaster-detail-page__sticky-search {
+  display: flex;
+
+  &.is-scrolling-down {
+    transform: translateY(-64px);
+  }
+}
