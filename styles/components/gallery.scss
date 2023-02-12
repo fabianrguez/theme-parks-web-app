@@ -1,0 +1,16 @@
+.gallery {
+  display: flex;
+  flex-direction: column;
+
+  &__list {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__dot {
+    &--active {
+      width: 1.5rem;
+    }
+  }
+}

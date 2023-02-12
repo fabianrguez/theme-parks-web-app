@@ -18,5 +18,11 @@ export default function CoasterParksSearchField() {
     []
   );
 
-  return <SearchSuggestionsField searchUrl={`${apiUrl}/api/coasters/search`} mapSuggestions={mapSuggestions} />;
+  return (
+    <SearchSuggestionsField
+      searchUrl={`${apiUrl}/api/coasters/search`}
+      placeholder="Search coaster by name or park..."
+      mapSuggestions={mapSuggestions}
+    />
+  );
 }

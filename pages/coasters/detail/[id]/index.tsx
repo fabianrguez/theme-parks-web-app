@@ -84,7 +84,9 @@ export default function CoasterDetailPage({ coaster }: CoasterDetailPageProps) {
         </section>
         <If condition={coaster.pictures.length > 0}>
           <section className="flex flex-col mt-4 p-2">
-            <h2 className="font-bold text-2xl border-b-4 text-indigo-800 border-indigo-800">Gallery</h2>
+            <h2 className="flex items-end font-bold text-2xl border-b-4 text-indigo-800 border-indigo-800">
+              Gallery <span className=" text-sm ml-auto">({coaster.pictures.length})</span>
+            </h2>
             <Gallery className="mt-4" images={mapCoasterImagesToGallery(coaster.pictures)} />
           </section>
         </If>

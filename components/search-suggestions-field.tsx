@@ -6,6 +6,7 @@ import { If } from '@/components';
 type SearchFieldProps = {
   searchUrl: string;
   searchParam?: string;
+  placeholder?: string;
   mapSuggestions: (entry: any, searchTerm: string) => any;
 };
 
@@ -14,6 +15,7 @@ const defaultMapper = (entry: any, _: string) => entry;
 export default function SearchSuggestionsField({
   searchUrl,
   searchParam = 'q',
+  placeholder = '',
   mapSuggestions = defaultMapper,
 }: SearchFieldProps) {
   const [searchValue, setSearchValue] = useState<string>('');
@@ -71,7 +73,7 @@ export default function SearchSuggestionsField({
         <input
           type="search"
           className="bg-gray-50 border-2 text-black font-semibold placeholder:text-black text-sm rounded-lg outline-none block w-full p-2.5"
-          placeholder="Roller coaster search ..."
+          placeholder={placeholder}
           onChange={handleChange}
         />
       </div>
@@ -84,7 +86,7 @@ export default function SearchSuggestionsField({
             <li
               key={index}
               tabIndex={0}
-              className="text-white p-4 after:border-b-2 cursor-pointer hover:dark:bg-gray-500 transition-all"
+              className="text-white p-4 after:border-b-2 cursor-pointer hover:bg-gray-500 transition-all"
             >
               {suggestion}
             </li>
