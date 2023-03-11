@@ -72,7 +72,7 @@ export default function CoasterDetailPage({ coaster }: CoasterDetailPageProps) {
                 {coaster.status.state}
               </span>
             </header>
-            <h3 className="font-semibold text-xl">{coaster.parkName}</h3>
+            <h3 className="font-semibold text-xl">{coaster.park.name}</h3>
             <h4>{coaster.region}</h4>
             <div className="flex flex-col mt-4">
               <span className="font-bold">{coaster.make}</span>

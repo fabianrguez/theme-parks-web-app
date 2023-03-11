@@ -4,7 +4,10 @@ import RollerCoasterStats from './roller-coaster-stats';
 export default interface RollerCoaster {
   id: number;
   name: string;
-  parkName: string;
+  park: {
+    name: string;
+    id: number;
+  }
   city: string;
   state: string;
   region: string;
@@ -21,4 +24,8 @@ export default interface RollerCoaster {
   stats?: RollerCoasterStats;
   mainPicture: RollerCoasterPicture | undefined;
   pictures: RollerCoasterPicture[];
+  coords: {
+    lat: string | undefined;
+    lng: string | undefined;
+  };
 }
