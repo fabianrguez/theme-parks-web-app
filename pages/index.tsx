@@ -24,7 +24,7 @@ export default function Home({ randomCoaster }: HomeProps) {
             id={randomCoaster.id}
             name={randomCoaster.name}
             image={randomCoaster.mainPicture?.url}
-            parkName={randomCoaster.parkName}
+            parkName={randomCoaster.park.name}
             status={randomCoaster.status.state}
             state={randomCoaster.state}
             city={randomCoaster.city}
