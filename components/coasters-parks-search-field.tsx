@@ -11,7 +11,7 @@ export default function CoasterParksSearchField() {
       entry.coasters.map((coaster: RollerCoaster) => (
         <Link key={coaster.id} href={`/coasters/detail/${coaster.id}`}>
           <span>
-            <strong>[{coaster.region}]</strong> {coaster.name} - {coaster.parkName}
+            <strong>[{coaster.region}]</strong> {coaster.name} - {coaster.park.name}
           </span>
         </Link>
       )),
