@@ -27,7 +27,7 @@ export default function CoastersPage({ coasters, total, page }: CoastersPageProp
               id={coaster.id}
               name={coaster.name}
               image={coaster.mainPicture.url}
-              parkName={coaster.parkName}
+              parkName={coaster.park.name}
               status={coaster.status.state}
               state={coaster.state}
               city={coaster.city}
