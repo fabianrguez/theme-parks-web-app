@@ -1,6 +1,7 @@
 import { Head, RollerCoasterCard } from '@/components';
 import type { RollerCoaster } from '@/types';
 import type { GetServerSideProps } from 'next';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 
 type HomeProps = {
@@ -8,6 +9,8 @@ type HomeProps = {
 };
 
 export default function Home({ randomCoaster }: HomeProps) {
+  const t = useTranslations('index-page');
+
   return (
     <>
       <Head metaContent="Show roller coasters information">
@@ -36,7 +39,7 @@ export default function Home({ randomCoaster }: HomeProps) {
             className="font-semibold bg-indigo-500 rounded-md p-4 hover:-rotate-6 hover:scale-110 text-white transition-all duration-150"
             href="/coasters/1"
           >
-            Discover roller coasters!
+            {t('discover-coasters')}
           </Link>
         </section>
       </main>
@@ -44,7 +47,7 @@ export default function Home({ randomCoaster }: HomeProps) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   const randomCoaster = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/coasters/random`).then(
     (response: Response) => response.json()
   );
@@ -52,6 +55,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   return {
     props: {
       randomCoaster,
+      messages: (await import(`@/messages/${locale}.json`)).default,
     },
   };
 };
